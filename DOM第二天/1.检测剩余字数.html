@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div id="box">
+    <textarea id="text" cols="30" rows="10"></textarea>
+    <p>
+      还可以输入<span id="sp">40</span>个字
+    </p>
+  </div>
+
+  <script>
+    //先绑定id
+    var oText = document.getElementById('text');
+    var oSp = document.getElementById('sp');
+    oText.onkeyup = function() {
+      //先获取表单长度
+      var getlength = oText.value.length;
+      //声明一个num用来计算剩余字数
+      var num = 40 - getlength;
+      if (num < 0) {
+        oSp.style.color = 'red';
+      } else {
+        oSp.style.color = 'blue';
+      }
+      //如果字数小于0就禁止输入
+      if (num < 0) {
+        oText.value = oText.value.substr(0, 40);
+      }
+      //给span中的数字重新赋值，替换成动态的
+      oSp.textContent = num;
+    }
+  </script>
+</body>
+
+</html>

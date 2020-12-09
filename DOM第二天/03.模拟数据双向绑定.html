@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="inpt">
+  <p id="pn">c</p>
+  <script>
+    //p元素里的内容随着表单的变化而变化
+    var oInpt = document.getElementById('inpt');
+    var oPn = document.getElementById('pn');
+    oInpt.oninput = function() {
+      oPn.textContent = oInpt.value;
+    }
+  </script>
+</body>
+
+</html>

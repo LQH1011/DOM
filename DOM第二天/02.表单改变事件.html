@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="inpt">
+  <script>
+    /* 
+                      表单事件：
+                      1.input：当表单内容发生变化的时候触发
+                      2.change:当表单内容发生变化并失去焦点的时候触发
+                       */
+    var oInpt = document.getElementById('inpt');
+    oInpt.oninput = function() {
+      console.log('触发了input');
+    }
+    oInpt.onchange = function() {
+      console.log('触发了change');
+    }
+  </script>
+</body>
+
+</html>
