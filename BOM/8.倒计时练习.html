@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="con">敌军还有5秒到达战场</h1>
+  <script>
+    var oCon = document.querySelector('.con');
+    //计数器
+    var num = 5;
+    //初始化一个timer
+    var timer = null;
+    timer = setInterval(function() {
+      --num;
+      oCon.textContent = '敌军还有' + num + '秒到达战场'
+      if (num <= 0) {
+        clearInterval(timer);
+        oCon.textContent = '全军出击';
+      }
+    }, 1000);
+    //为了解决倒计时5秒之后就停止，所以到0时清除定时器
+  </script>
+</body>
+
+</html>

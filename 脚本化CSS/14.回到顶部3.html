@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outer {
+      height: 4000px;
+    }
+    
+    .top {
+      width: 143px;
+      height: 151px;
+      background: url(./images/01.png) center center no-repeat;
+      background-size: 100% 100%;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="top"></div>
+  </div>
+  <script>
+    //绑定事件
+    var oOuter = document.querySelector('.outer');
+    var oTop = document.querySelector('.top');
+    //监听滚动事件
+    window.onscroll = function() {
+        //判断大于500显示，小于500隐藏
+        if (window.pageYOffset > 500) {
+          oTop.style.display = 'block';
+        } else {
+          oTop.style.display = 'none';
+        }
+      }
+      //定义一个变量来接收定时器
+    var returnTopTimer = null;
+    //绑定点击事件
+    //点击之前先清除定时器
+    clearInterval(returnTopTimer);
+    oTop.onclick = function() {
+      //通过步长来回到顶部
+      //获取当前位置
+      var startLocation = window.pageYOffset;
+      //定义结束位置
+      var endLocation = 0;
+      //定义开始的步数
+      var startStep = 0
+        //定义结束的步数
+      var endStep = 80;
+      //计算每一步走的距离 （结束的位置-开始的位置）/（结束的步数-开始的步数）
+      var everyStep = (endLocation - startLocation) / (endStep - startStep);
+      //通过间歇定时器来计算
+      returnTopTimer = setInterval(function() {
+        //让初始化位置每走一步就累加
+        startLocation += everyStep;
+        //起始步数进行累加，用来判断是否走完
+        startStep++;
+        //如果起始步数大于结束的步数，则说明走完了，清除定时器
+        if (startStep >= endStep) {
+          clearInterval(returnTopTimer);
+        }
+        //把得到的初始位置赋值给window.scrollTo 完成滚动
+        window.scrollTo(0, startLocation);
+      }, 1);
+
+    }
+  </script>
+</body>
+
+</html>

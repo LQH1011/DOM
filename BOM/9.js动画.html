@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #con {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      top: 100px;
+      left: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">走你</button>
+  <div id="con"></div>
+
+  <script>
+    var oBtn = document.getElementById('btn');
+    var oCon = document.getElementById('con');
+    //定义一个计数器
+    var num = 0;
+    //初始化一个timer
+    var timer = null;
+
+    oBtn.onclick = function() {
+      //为了多次点击会触发多个定时器，所以在执行点击之前，先清除定时器
+      clearInterval(timer);
+      timer = setInterval(function() {
+        num += 3;
+        if (num >= 1000) {
+          num = 1000;
+          clearInterval(timer);
+
+        }
+        oCon.style.left = num + 'px';
+      }, 1000 / 64);
+    }
+  </script>
+</body>
+
+</html>

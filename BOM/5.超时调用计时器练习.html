@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .box {
+      width: 400px;
+      margin: 50px auto 0;
+      position: relative;
+    }
+    
+    .box .tit {
+      height: 40px;
+      line-height: 40px;
+      background-color: turquoise;
+    }
+    
+    .box .con {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 400px;
+      height: 300px;
+      background-color: violet;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2 class="tit"></h2>
+    <div class="con"></div>
+  </div>
+
+  <script>
+    //案例：移出鼠标使元素过2s再消失
+    var oBox = document.querySelector('.box');
+    var oTit = document.querySelector('.tit');
+    var oCon = document.querySelector('.con');
+    //初始化一个timer
+    timer = null;
+    oBox.onmouseenter = function() {
+      //如果鼠标再次移入，而定时器的时间还没进行完，就会出现bug
+      //所以每次移入鼠标之前，清除上一次计时器
+      clearTimeout(timer);
+      oCon.style.display = 'block';
+    }
+    oBox.onmouseleave = function() {
+      timer = setTimeout(function() {
+        oCon.style.display = 'none';
+      }, 2000)
+    }
+  </script>
+</body>
+
+</html>
