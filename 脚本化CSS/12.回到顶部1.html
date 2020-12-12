@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outer {
+      height: 4000px;
+    }
+    
+    .top {
+      width: 143px;
+      height: 151px;
+      background: url(./images/01.png) center center no-repeat;
+      background-size: 100% 100%;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="top"></div>
+  </div>
+  <script>
+    var oOuter = document.querySelector('.outer');
+    var oTop = document.querySelector('.top');
+
+    //设置监听事件，监听windos的滚动
+    window.onscroll = function() {
+        if (window.pageYOffset > 500) {
+          oTop.style.display = 'block';
+        } else {
+          oTop.style.display = 'none';
+        }
+      }
+      //当点击图片的时候，滚动条的坐标设置为0就能立马跳转到顶部
+    oTop.onclick = function() {
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+
+</html>
