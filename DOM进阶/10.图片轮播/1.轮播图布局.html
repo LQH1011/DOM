@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .outer {
+      width: 500px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+    }
+    
+    .inner {
+      overflow: hidden;
+    }
+    
+    .con {
+      width: 5000px;
+      display: flex;
+    }
+    
+    .con img {
+      width: 500px;
+      height: 350px;
+    }
+    
+    .btn .left,
+    .btn .right {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 40px;
+      background-color: rgba(134, 56, 166, .5);
+      color: white;
+    }
+    
+    .btn .left {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .btn .right {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .list {
+      display: flex;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .list li {
+      width: 15px;
+      height: 15px;
+      background-color: rgba(134, 56, 166, .5);
+      border-radius: 50%;
+      margin: 0 10px;
+    }
+    
+    .list li.active {
+      background-color: rgba(20, 200, 200, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="inner">
+      <div class="con">
+        <img src="image/banner01.png" alt="">
+        <img src="image/banner02.png" alt="">
+        <img src="image/banner03.png" alt="">
+        <img src="image/banner04.png" alt="">
+        <img src="image/banner05.png" alt="">
+      </div>
+      <div class="btn">
+        <p class="left">&lt</p>
+        <p class="right">&gt</p>
+      </div>
+      <ul class="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>

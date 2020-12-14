@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">变红</button>
+  <ul class="box">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <script>
+    var oBox = document.querySelector('.box');
+    var oLis = document.querySelectorAll('.box li');
+    var oBtn = document.getElementById('btn');
+
+    //首先对每个小li绑定点击事件
+    oLis.forEach(function(item, index) {
+        item.onclick = function() {
+          //点击之后就自定义设置一个标记
+          item.setAttribute('click', true);
+        }
+      })
+      //点击按钮之后，对上面通过点击设置了标记的小li设置背景颜色
+    oBtn.onclick = function() {
+      oLis.forEach(function(item, index) {
+        //判断是否具有click标记
+        if (item.getAttribute('click')) {
+          //如果有就设置背景颜色
+          item.style.background = 'red';
+          //当效果已经完成后 可以把标记去掉
+          item.removeAttribute("click");
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

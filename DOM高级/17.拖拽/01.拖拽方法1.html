@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box');
+    //按下鼠标，先可以获取到鼠标的offset的x,y的值
+    oBox.onmousedown = function(e) {
+      //定义一个变量来装x，y的坐标
+      var mouseToEle = {
+          x: e.offsetX,
+          y: e.offsetY
+        }
+        //按下鼠标开始拖拽移动
+        //因为鼠标移动比元素渲染快，所以当box移出box的时候，拖拽就会停止，所以把移动事件绑定在document上
+      document.onmousemove = function(e) {
+          //计算移动的距离，移动的时候client的x,y在改变，等于client-offsex
+          var eleLocation = {
+              x: e.clientX - mouseToEle.x,
+              y: e.clientY - mouseToEle.y
+            }
+            //判断临界值
+            //获取窗口的宽高
+          var winWH = {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientheight
+          }
+          if (eleLocation.x <= 0) {
+            eleLocation.x = 0;
+          } else if (eleLocation.x >= winWH.width - oBox.offsetWidth) {
+            eleLocation.x = winWH.width - oBox.offsetHeight
+          }
+          //赋值
+          oBox.style.left = eleLocation.x + "px";
+          oBox.style.top = eleLocation.y + "px";
+        }
+        //绑定松开事件
+        //可能不在box上松开，那么就需要把事件绑定在document上
+      document.onmouseup = function() {
+        //取消move事件，就可以不移动了
+        document.onmousemove = null;
+        //自杀式删除自身 下次再按会重新绑定
+        document.onmouseup = null;
+
+      }
+    }
+  </script>
+</body>
+
+</html>

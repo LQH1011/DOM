@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">新添加</button>
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    /* 
+                        事件委托：
+                            事件就是我们普通绑定的事件
+                            委托就是不绑定在当前元素上，而是绑定在了父级或者祖辈元素上,通过event事件对象的target属性，获取当前点击的精确元素
+                            使用了冒泡的原理
+
+                            优点：
+                                1.减少for循环，减少绑定事件数量，提高效率
+                                2.可以给未来的元素绑定事件
+                    */
+    var oList = document.getElementById('list');
+    var oLists = oList.getElementsByTagName('li');
+    var oBtn = document.getElementById('btn');
+
+    //利用事件委托对象来给小li的父级元素绑定点击事件
+    oList.onclick = function(event) {
+        //防止出现点击到ul出现整个改变的情况，给li加判断
+        if (event.target.nodeName.toLowerCase() === 'li') {
+          event.target.style.background = 'red';
+        }
+      }
+      //通过点击按钮新增小li
+    oBtn.onclick = function(event) {
+      //首先创建新的节点小li
+      var newLi = document.createElement('li');
+      newLi.textContent = 'hello,你好啊';
+      //把小li插入到oList中
+      oList.appendChild(newLi);
+    }
+  </script>
+</body>
+
+</html>

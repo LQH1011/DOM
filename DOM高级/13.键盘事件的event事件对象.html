@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box">box</div>
+  <script>
+    /* 
+                        绑定键盘事件：
+                            1.可输入的表单元素
+                            2.document
+                    
+                    
+                    */
+    /* 
+                键盘事件中，event对象的keyCode属性 代表当前按键的键码
+                根据键码 可以判断当前按下的是哪一个键
+            
+            */
+    document.onkeydown = function(event) {
+      console.log(event.keyCode);
+
+      if (event.keyCode == 13) {
+        alert('我就知道你会按回车键');
+      }
+    }
+  </script>
+</body>
+
+</html>

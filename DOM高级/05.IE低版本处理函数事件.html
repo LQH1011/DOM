@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">删除</button>
+  <div id="con">con</div>
+  <script>
+    /* 
+                IE绑定：
+                    1.attachEvent方法
+                        - 参数1：on+事件名 
+                        - 参数2：事件函数
+                        - 低版本IE只支持冒泡，所以不需要第三个参数
+                    
+                    2.detachEvent方法移除attachEvent绑定的事件
+                */
+    var oCon = document.getElementById('con');
+    var oBtn = document.getElementById('btn');
+
+    function fn() {
+      alert('cons');
+    }
+    oCon.attachEvent('onclick', fn);
+    oBtn.onclick = function() {
+      oCon.detachEvent('onclick', fn);
+    }
+  </script>
+</body>
+
+</html>
